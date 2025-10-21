@@ -1,0 +1,11 @@
+# Node dependencies
+node_modules/
+
+# Playwright artifacts
+playwright-report/
+playwright/.cache/
+test-results/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
