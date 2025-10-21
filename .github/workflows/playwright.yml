@@ -76,7 +76,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: playwright-artifacts
+          name: playwright-artifacts-${{ matrix.project }}
           path: |
             test-results/
             playwright-report/
