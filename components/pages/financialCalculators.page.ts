@@ -10,12 +10,12 @@ export class FinancialCalculatorsPage extends BasePage {
   private readonly consent = new ConsentMolecule(this.page);
 
   async open(): Promise<void> {
-    await this.page.goto(routes.financialCalculators);
+    await this.page.goto(routes.financialCalculators, { waitUntil: 'domcontentloaded' });
     await this.consent.acceptAll();
   }
 
   async openWithoutConsent(): Promise<void> {
-    await this.page.goto(routes.financialCalculators);
+    await this.page.goto(routes.financialCalculators, { waitUntil: 'domcontentloaded' });
   }
 
   async expectLoaded(): Promise<void> {

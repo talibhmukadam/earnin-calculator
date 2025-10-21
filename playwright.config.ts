@@ -6,6 +6,7 @@ export default defineConfig({
   expect: {
     timeout: 10_000,
   },
+  snapshotPathTemplate: '{testDir}/{testFilePath}-snapshots/{arg}-{projectName}{ext}',
   fullyParallel: false,
   retries: process.env.CI ? 2 : 0,
   reporter: [['list'], ['html', { open: 'never' }]],
@@ -22,9 +23,6 @@ export default defineConfig({
       name: 'chromium-desktop',
       use: {
         ...devices['Desktop Chrome'],
-        launchOptions: {
-          args: ['--incognito'],
-        },
       },
     },
     {

@@ -10,7 +10,7 @@ export class BudgetCalculatorPage extends BasePage {
   readonly results = new BudgetResultsOrganism(this.page);
 
   async open(): Promise<void> {
-    await this.page.goto(routes.budgetCalculator);
+    await this.page.goto(routes.budgetCalculator, { waitUntil: 'domcontentloaded' });
     await this.consent.acceptAll();
     await this.page.waitForSelector(`[data-testid="${testIds.incomeInput}"]`);
   }
