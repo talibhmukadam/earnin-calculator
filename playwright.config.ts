@@ -25,6 +25,13 @@ export default defineConfig({
       name: 'chromium-desktop',
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      name: 'webkit-mobile',
+      use: {
+        ...devices['iPhone 14 Pro'],
+        browserName: 'webkit',
+      },
+    },
   ],
   outputDir: 'test-results',
 });
