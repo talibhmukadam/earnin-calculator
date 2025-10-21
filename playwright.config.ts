@@ -16,14 +16,16 @@ export default defineConfig({
     trace: 'on-first-retry',
     video: 'retain-on-failure',
     viewport: { width: 1280, height: 720 },
-    launchOptions: {
-      args: ['--incognito'],
-    },
   },
   projects: [
     {
       name: 'chromium-desktop',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: {
+          args: ['--incognito'],
+        },
+      },
     },
     {
       name: 'webkit-mobile',
