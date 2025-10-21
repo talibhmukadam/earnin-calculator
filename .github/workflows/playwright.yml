@@ -72,6 +72,14 @@ jobs:
         with:
           name: playwright-report-${{ matrix.project }}
           path: playwright-report-${{ matrix.project }}
+          
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-artifacts
+          path: |
+            test-results/
+            playwright-report/
 
   publish-report:
     name: Publish Playwright HTML Report
