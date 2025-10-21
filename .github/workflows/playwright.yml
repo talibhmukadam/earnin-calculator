@@ -34,31 +34,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Restore npm cache
-        id: npm-cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            npm-${{ runner.os }}-
-
       - name: Install dependencies
-        if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
         run: npm ci
 
-      - name: Restore Playwright browser cache
-        if: ${{ matrix.project != 'webkit-mobile' }}
-        id: pw-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: pw-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            pw-${{ runner.os }}-
-
       - name: Install Playwright browsers (if needed)
-        if: ${{ steps.pw-cache.outputs.cache-hit != 'true' }}
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
